@@ -11,6 +11,19 @@
   </head>
 
   <body>
+    <% flash.each do |type, msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>
+    <% if session[:current_user_id] %>
+        <%= session[:current_user_name] %>
+        <%= link_to "Log out", sessions_path, method: :delete %>
+        <%= link_to "Make Event", new_event_path %>
+        <%= link_to "All Events", events_path %>
+    <% else %>
+        <%= link_to "Log in", new_sessions_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

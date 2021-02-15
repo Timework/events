@@ -1,0 +1,23 @@
+<%= @user.name %>
+<ul>
+    <% @events.each do |event| %>
+        <li>
+            <%= event.description%>
+        </li>
+    <% end %>
+</ul>
+<ul>
+    <% @attendeds.each do |attended| %>
+        <% if attended.date.past? %>
+        <li>
+            Past Event
+            <%= attended.description %>
+        </li>
+        <% else %>
+        <li>
+            Upcoming Event
+            <%= attended.description %>
+        </li>
+        <% end %>
+    <% end %>
+</ul>
